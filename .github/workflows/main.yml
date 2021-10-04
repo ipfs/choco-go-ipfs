@@ -1,8 +1,8 @@
 name: Release to Chocolatey
 on:
   workflow_dispatch:
-#  schedule:
-#    - cron: '0 * * * *'
+  schedule:
+    - cron: '0 0 * * *'
 
 concurrency:
   group: single-run
