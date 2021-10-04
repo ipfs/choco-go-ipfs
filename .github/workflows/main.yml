@@ -1,0 +1,52 @@
+name: Release to Chocolatey
+on:
+  workflow_dispatch:
+#  schedule:
+#    - cron: '0 * * * *'
+
+concurrency:
+  group: single-run
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: windows-latest
+    outputs:
+      skip: ${{ steps.check.outputs.skip }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Find the latest version on Chocolatey
+        run: choco search go-ipfs --exact | grep go-ipfs | awk '{ print $2 }' > choco-version
+      - name: Find the latest version on dist.ipfs.io
+        run: curl -s https://dist.ipfs.io/go-ipfs/versions | egrep "^v[0-9]+\.[0-9]+\.[0-9]+$" | tail -1 | cut -c 2- > dist-version
+      - name: Check if the latest version is already published
+        id: check
+        run: |
+          diff choco-version dist-version || true
+          if cmd -s choco-version dist-version; then
+            echo "::set-output name=skip::true"
+          else
+            echo "::set-output name=skip::false"
+          fi
+  publish:
+    runs-on: windows-latest
+    needs: check
+    if: ${{ needs.check.outputs.skip != 'true' }}
+    environment: chocolatey
+    defaults:
+      run:
+        shell: pwsh
+        working-directory: ./go-ipfs
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Dependencies
+        run: choco install au
+      - name: Build the latest release 🏗️
+        run: |
+          ./update.ps1
+          choco pack
+      - name: Publish to Chocolatey 🍫
+        run: choco push --key ${{ secrets.chocolatey_key }} --source "https://push.chocolatey.org"
