@@ -6,7 +6,7 @@
     <title>go-ipfs</title>
     <version>0.0.0</version>
     <authors>ipfs</authors>
-    <owners>LinkSatonaka</owners>
+    <owners>ipfs</owners>
     <summary>IPFS implementation in go https://github.com/ipfs/ipfs</summary>
     <description>IPFS implementation in go
     </description>

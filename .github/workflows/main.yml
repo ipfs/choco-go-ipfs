@@ -48,5 +48,18 @@ jobs:
         run: |
           ./update.ps1
           choco pack
+      # if ./update.ps1 fails for any reason a bogus package
+      # go-ipfs.0.0.0.nupkg is created.
+      # we skip publishing when that happens.
+      - name: Check if ok to proceed with publishing
+        id: check
+        run: |
+          if test -e go-ipfs.0.0.0.nupkg; then
+            echo "::set-output name=ok::false"
+          else
+            echo "::set-output name=ok::true"
+          fi
+        shell: bash
       - name: Publish to Chocolatey 🍫
+        if: ${{ steps.check.outputs.ok == 'true' }}
         run: choco push --key ${{ secrets.chocolatey_key }} --source "https://push.chocolatey.org"
