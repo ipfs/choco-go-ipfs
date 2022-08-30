@@ -3,7 +3,7 @@
 [![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](https://protocol.ai)
 [![](https://img.shields.io/badge/project-IPFS-blue.svg?style=flat-square)](https://ipfs.io/)
 
-> automatically publish go-ipfs releases to Chocolatey for MS Windows
+> automatically publish Kubo (go-ipfs) releases to Chocolatey for MS Windows
 
 ## Table of Contents
 
@@ -17,7 +17,7 @@
 This repo does everything automatically.
 
 The Github Action runs periodically and detects a new `go-ipfs` version at
-https://dist.ipfs.io and publishes a new chocolatey package with it.
+https://dist.ipfs.tech and publishes a new chocolatey package with it.
 
 ## Contributing
 

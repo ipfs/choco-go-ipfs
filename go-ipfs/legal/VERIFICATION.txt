@@ -3,13 +3,13 @@ Verification is intended to assist the Chocolatey moderators and community
 in verifying that this package's contents are trustworthy.
 
 The embedded software have been downloaded from the listed download
-location on <https://dist.ipfs.io/#go-ipfs>
+location on <https://dist.ipfs.tech/#kubo>
 and can be verified by doing the following:
 
 1. Go to
 
-	x32: https://dist.ipfs.io/go-ipfs/v0.0.0/go-ipfs_v0.0.0_windows-386.zip
-	x64: https://dist.ipfs.io/go-ipfs/v0.0.0/go-ipfs_v0.0.0_windows-amd64.zip
+	x32: https://dist.ipfs.tech/go-ipfs/v0.0.0/go-ipfs_v0.0.0_windows-386.zip
+	x64: https://dist.ipfs.tech/go-ipfs/v0.0.0/go-ipfs_v0.0.0_windows-amd64.zip
   
 2. Get the checksum using one of the following methods:
   - Using powershell function 'Get-FileHash'

@@ -1,6 +1,6 @@
 Import-Module au
 
-$releases = "https://dist.ipfs.io/#go-ipfs"
+$releases = "https://dist.ipfs.tech/#kubo"
 
 function global:au_SearchReplace {
 	@{
@@ -12,7 +12,7 @@ function global:au_SearchReplace {
 			"(?i)(^\s*checksum64\:).*"      = "`${1} $($Latest.Checksum64)"
 		}
 		".\go-ipfs.nuspec" = @{
-			"(?i)(^\s*<releaseNotes>)(.*)" = "`${1}https://github.com/ipfs/go-ipfs/blob/v$($Latest.Version)/CHANGELOG.md</releaseNotes>"
+			"(?i)(^\s*<releaseNotes>)(.*)" = "`${1}https://github.com/ipfs/kubo/blob/v$($Latest.Version)/CHANGELOG.md</releaseNotes>"
 		}
 	}
 }
@@ -20,12 +20,12 @@ function global:au_SearchReplace {
 function global:au_BeforeUpdate { Get-RemoteFiles -Purge }
 
 function global:au_GetLatest {
-	$download_page = (iwr $releases -UseBasicParsing).Content -split '\n' | sls 'data-id="go-ipfs" data-version="'
+	$download_page = (iwr $releases -UseBasicParsing).Content -split '\n' | sls 'data-id="kubo" data-version="'
 	$Matches = $null
 	$download_page -match '\d+\.\d+\.\d+'
 	$version = $Matches[0]
-	$url32 = "https://dist.ipfs.io/go-ipfs/v$version/go-ipfs_v${version}_windows-386.zip"
-	$url64 = "https://dist.ipfs.io/go-ipfs/v$version/go-ipfs_v${version}_windows-amd64.zip"
+	$url32 = "https://dist.ipfs.tech/go-ipfs/v$version/go-ipfs_v${version}_windows-386.zip"
+	$url64 = "https://dist.ipfs.tech/go-ipfs/v$version/go-ipfs_v${version}_windows-amd64.zip"
 
 	return @{ Version = $version; URL32 = $url32; URL64 = $url64 }
 }
