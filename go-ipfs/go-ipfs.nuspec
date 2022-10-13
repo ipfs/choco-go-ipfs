@@ -8,7 +8,7 @@
     <authors>ipfs</authors>
     <owners>ipfs</owners>
     <summary>IPFS implementation in Go https://ipfs.tech</summary>
-    <description>IPFS implementation in Go
+    <description>IPFS implementation in Go https://ipfs.tech
     </description>
     <projectUrl>https://github.com/ipfs/kubo</projectUrl>
     <packageSourceUrl>https://github.com/ipfs/choco-go-ipfs</packageSourceUrl>
