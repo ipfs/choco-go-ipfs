@@ -33,7 +33,6 @@ jobs:
   publish:
     runs-on: windows-latest
     needs: check
-    if: needs.check.outputs.publish == 'true'
     environment: chocolatey
     defaults:
       run:
