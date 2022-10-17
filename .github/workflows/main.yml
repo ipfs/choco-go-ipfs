@@ -50,7 +50,7 @@ jobs:
         run: choco install au
       - name: Build the latest release 🏗️
         env:
-          NoCheckChocoVersion: ${{ github.event.inputs.no-check-choco-version }}
+          NoCheckChocoVersion: ${{ github.event.inputs.no-check-choco-version || 'False' }}
         run: |
           ./update.ps1
           choco pack
