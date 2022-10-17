@@ -1,6 +1,10 @@
 name: Release to Chocolatey
 on:
   workflow_dispatch:
+    inputs:
+      no-check-choco-version:
+        required: false
+        description: Disable version check in the Chocolatey community feed
   schedule:
     - cron: '0 0 * * *'
 
@@ -45,6 +49,8 @@ jobs:
       - name: Install Dependencies
         run: choco install au
       - name: Build the latest release 🏗️
+        env:
+          NoCheckChocoVersion: ${{ github.event.inputs.no-check-choco-version || 'False' }}
         run: |
           ./update.ps1
           choco pack

@@ -30,4 +30,9 @@ function global:au_GetLatest {
 	return @{ Version = $version; URL32 = $url32; URL64 = $url64 }
 }
 
-Update-Package -ChecksumFor none
+if ([bool]::Parse($Env:NoCheckChocoVersion)) {
+	Update-Package -ChecksumFor none -NoCheckChocoVersion
+}
+else {
+	Update-Package -ChecksumFor none
+}
