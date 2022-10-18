@@ -5,8 +5,6 @@ on:
       no-check-choco-version:
         required: false
         description: Disable version check in the Chocolatey community feed
-  schedule:
-    - cron: '0 0 * * *'
 
 concurrency:
   group: single-run
