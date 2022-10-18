@@ -8,7 +8,9 @@
     <authors>ipfs</authors>
     <owners>ipfs</owners>
     <summary>IPFS implementation in Go https://ipfs.tech</summary>
-    <description>IPFS implementation in Go https://ipfs.tech
+    <description>
+      Kubo is not distributed through Chocolatey anymore (https://github.com/ipfs/kubo/issues/9341).
+      Please download Kubo from https://dist.ipfs.tech/#kubo.
     </description>
     <projectUrl>https://github.com/ipfs/kubo</projectUrl>
     <packageSourceUrl>https://github.com/ipfs/choco-go-ipfs</packageSourceUrl>

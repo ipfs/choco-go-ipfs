@@ -20,12 +20,9 @@ function global:au_SearchReplace {
 function global:au_BeforeUpdate { Get-RemoteFiles -Purge }
 
 function global:au_GetLatest {
-	$download_page = (iwr $releases -UseBasicParsing).Content -split '\n' | sls 'data-id="kubo" data-version="'
-	$Matches = $null
-	$download_page -match '\d+\.\d+\.\d+'
-	$version = $Matches[0]
-	$url32 = "https://dist.ipfs.tech/go-ipfs/v$version/go-ipfs_v${version}_windows-386.zip"
-	$url64 = "https://dist.ipfs.tech/go-ipfs/v$version/go-ipfs_v${version}_windows-amd64.zip"
+	$version = "0.17.0"
+	$url32 = "https://github.com/galargh/kubo/releases/download/v0.17.0/kubo_v0.17.0_windows-386.zip"
+	$url64 = "https://github.com/galargh/kubo/releases/download/v0.17.0/kubo_v0.17.0_windows-amd64.zip"
 
 	return @{ Version = $version; URL32 = $url32; URL64 = $url64 }
 }
