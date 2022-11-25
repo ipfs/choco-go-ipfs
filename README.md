@@ -1,3 +1,6 @@
+❗ Kubo is not distributed through Chocolatey anymore (https://github.com/ipfs/kubo/issues/9341).
+Please download Kubo from https://dist.ipfs.tech/#kubo.
+
 # choco-go-ipfs
 
 [![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](https://protocol.ai)
